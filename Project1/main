@@ -5,9 +5,5 @@ opt_file = 'Data/eil51opt.dat'
 data = np.loadtxt(file)
 data = data[:, 1:3]
 tour = nn.one_sided_nn(9, list(data))
-print(nn.calculate_tour(tour))
-opt_t = (np.loadtxt(opt_file))
-opt_t = opt_t.astype(int)
-tour = data[opt_t-1]
-print(nn.calculate_tour(tour))
-print(nn.calculate_tour(nn.two_sided_nn(9, list(data))))
+print(tour)
+print(nn.two_sided_nn(9, list(data)))
