@@ -1,0 +1,5 @@
+import numpy as np
+file = 'Data/eil51.dat'
+data = np.loadtxt(file)
+data = data[:, 1:3]
+print(data)
