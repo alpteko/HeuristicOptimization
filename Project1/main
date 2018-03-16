@@ -1,9 +1,0 @@
-import numpy as np
-import nn
-file = 'Data/eil51.dat'
-opt_file = 'Data/eil51opt.dat'
-data = np.loadtxt(file)
-data = data[:, 1:3]
-tour = nn.one_sided_nn(9, list(data))
-print(tour)
-print(nn.two_sided_nn(9, list(data)))
