@@ -1,23 +1,9 @@
-
-# coding: utf-8
-
-# In[92]:
-
-
 import numpy as np
-
-
-# In[93]:
-
 
 def load_data():
     data = np.loadtxt('data.txt')
     data = data[:,0:2]
     return data
-
-
-# In[134]:
-
 
 def init_facilities(k):
     data= load_data()
@@ -29,3 +15,8 @@ def init_facilities(k):
         solution.append(list(data[ind,:]))
     return solution
 
+def cost(solution):
+    total_cost = 0
+    for l in solution:
+        total_cost += np.sum((l-np.mean(l))**2)
+    return total_cost
