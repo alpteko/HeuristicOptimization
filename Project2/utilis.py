@@ -6,26 +6,22 @@ def load_data():
     return data
 
 def init_facilities(k):
-    data= load_data()
-    solution =  []
-    T = len(data)
-    mask = np.random.randint(k,size=T)
+    mask = np.random.randint(k,size=654)
+    return mask
+
+def find_cost(mask,data,k):
+    mu_array = np.zeros((654,2))
     for i in range(k):
-        ind = list(np.where(mask==i)[0])
-        solution.append(list(data[ind,:]))
-    return solution
+        mu = np.mean(data[mask==i,:],axis=0)
+        mu_array[mask==i,:] = mu
+    return np.sum((data-mu_array)**2)
 
-def cost(solution):
+def sqrt_cost(mask,data,k):
+    mu_array = np.zeros((654,2))
+    for i in range(k):
+        mu = np.mean(data[mask==i,:],axis=0)
+        mu_array[mask==i,:] = mu
     total_cost = 0
-    for l in solution:
-        mu = np.mean(l,axis=0)
-        total_cost += np.sum((l-mu)**2)
-    return total_cost
-
-def sqrt_cost(solution):
-    total_cost = 0
-    for l in solution:
-        mu = np.mean(l,axis=0)
-        for x in l:
-            total_cost += np.linalg.norm(x-mu)
+    for i in range(654):
+        total_cost += np.linalg.norm(data[i,:]-mu[i,:])
     return total_cost
