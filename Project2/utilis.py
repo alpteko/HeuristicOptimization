@@ -1,5 +1,5 @@
 import numpy as np
-
+import time
 def load_data():
     data = np.loadtxt('data.txt')
     data = data[:,0:2]
@@ -23,5 +23,5 @@ def sqrt_cost(mask,data,k):
         mu_array[mask==i,:] = mu
     total_cost = 0
     for i in range(654):
-        total_cost += np.linalg.norm(data[i,:]-mu[i,:])
+        total_cost += np.linalg.norm(data[i,:]-mu_array[i,:])
     return total_cost
