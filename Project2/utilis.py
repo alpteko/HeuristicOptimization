@@ -21,3 +21,11 @@ def cost(solution):
         mu = np.mean(l,axis=0)
         total_cost += np.sum((l-mu)**2)
     return total_cost
+
+def sqrt_cost(solution):
+    total_cost = 0
+    for l in solution:
+        mu = np.mean(l,axis=0)
+        for x in l:
+            total_cost += np.linalg.norm(x-mu)
+    return total_cost
