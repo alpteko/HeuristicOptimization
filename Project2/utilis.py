@@ -18,5 +18,6 @@ def init_facilities(k):
 def cost(solution):
     total_cost = 0
     for l in solution:
-        total_cost += np.sum((l-np.mean(l))**2)
+        mu = np.mean(l,axis=0)
+        total_cost += np.sum((l-mu)**2)
     return total_cost
